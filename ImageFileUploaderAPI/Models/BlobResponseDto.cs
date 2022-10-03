@@ -7,5 +7,6 @@
         public bool Error { get; set; }
 
         public BlobDto Blob { get; set; }
+        public bool IsDuplicated { get; internal set; }
     }
 }

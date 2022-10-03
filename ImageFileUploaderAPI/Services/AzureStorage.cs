@@ -46,6 +46,7 @@ namespace ImageFileUploaderAPI.Services
                 _logger.LogError($"File with name {fileName} already exists in container. Set another name to store the file in the container: '{storageContainerName}.'");
                 response.Status = $"File with name {fileName} already exists. Please use another name to store your file.";
                 response.Error = true;
+                response.IsDuplicated = true;
                 return response;
             }
             catch (RequestFailedException ex)
