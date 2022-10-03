@@ -39,7 +39,7 @@ namespace ImageUploaderAPI.Controllers
                     file.ContentType.ToLower() != "image/jpeg" &&
                     file.ContentType.ToLower() != "image/png")
                 {
-                    return BadRequest("File is a jpeg or png image");
+                    return BadRequest("File is not a jpeg or png image");
                 }
 
                 BlobResponseDto blobContentInfo = new();

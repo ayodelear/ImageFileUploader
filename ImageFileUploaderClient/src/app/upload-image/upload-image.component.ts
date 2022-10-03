@@ -1,6 +1,7 @@
 import { HttpClient, HttpEventType, HttpErrorResponse } from '@angular/common/http';
-import { Component, EventEmitter, OnInit, Output, Inject } from '@angular/core';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { Component, ElementRef, EventEmitter, OnInit, Output } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-upload',
@@ -11,7 +12,10 @@ export class UploadImageComponent implements OnInit {
   message: string = '';
   imageUrl: string = '';
   fileName: string = '';
+  storeLocation: string = '';
   @Output() public onUploadFinished = new EventEmitter();
+  @ViewChild('file')
+    myfile!: ElementRef;
 
   constructor(private http: HttpClient, private sanitizer: DomSanitizer) { }
 
@@ -40,10 +44,13 @@ export class UploadImageComponent implements OnInit {
 
             this.imageUrl = body.uri;
             this.fileName = body.name;
+            this.storeLocation = body.storeLocation;
+            this.myfile.nativeElement.value = "";
           }
         },
         error: (err: HttpErrorResponse) => {
           this.message = err.error;
+          this.myfile.nativeElement.value = "";
         }
       });
   }
