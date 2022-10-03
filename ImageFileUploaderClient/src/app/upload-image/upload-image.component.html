@@ -1,0 +1,25 @@
+<div class="row" style="margin-bottom:15px;">
+  <div class="col-md-3">
+    <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none" multiple=false>
+    <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button>
+  </div>
+  <div class="col-md-4">
+    <span class="upload" *ngIf="progress > 0">
+      {{progress}}%
+    </span>
+    <div>
+    <span class="upload" *ngIf="message">
+      {{message}}
+    </span>
+      </div>
+  </div>
+  <div class="col-md-10" *ngIf="imageUrl">
+    <img [src]="imageUrl | safeurl"
+         alt="{{fileName}}"
+         class="img-responsive"
+         style="max-height:300px"/>
+    <p>
+      {{fileName}}
+    </p>
+  </div>
+</div>

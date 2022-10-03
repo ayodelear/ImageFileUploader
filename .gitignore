@@ -452,12 +452,6 @@ $RECYCLE.BIN/
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-.history/*
-
-# Node
-/node_modules
-npm-debug.log
-yarn-error.log
 
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
@@ -466,6 +460,11 @@ yarn-error.log
 /tmp
 /out-tsc
 /bazel-out
+
+# Node
+/node_modules
+npm-debug.log
+yarn-error.log
 
 # IDEs and editors
 .idea/
@@ -477,19 +476,19 @@ yarn-error.log
 *.sublime-workspace
 
 # Visual Studio Code
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-.history/*
+ImageFileUploaderClient/.vscode/*
+!ImageFileUploaderClient/.vscode/settings.json
+!ImageFileUploaderClient/.vscode/tasks.json
+!ImageFileUploaderClient/.vscode/launch.json
+!ImageFileUploaderClient/.vscode/extensions.json
+ImageFileUploaderClient/.history/*
 
 # Miscellaneous
-/.angular/cache
-.sass-cache/
-/connect.lock
-/coverage
-/libpeerconnection.log
+/ImageFileUploaderClient/.angular/cache
+/ImageFileUploaderClient/.sass-cache/
+/ImageFileUploaderClient/connect.lock
+/ImageFileUploaderClient/coverage
+/ImageFileUploaderClient/libpeerconnection.log
 testem.log
 /typings
 
