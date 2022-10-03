@@ -1,6 +1,5 @@
 import { HttpClient, HttpEventType, HttpErrorResponse } from '@angular/common/http';
 import { Component, ElementRef, EventEmitter, OnInit, Output } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 import { ViewChild } from '@angular/core';
 
 @Component({
@@ -17,7 +16,7 @@ export class UploadImageComponent implements OnInit {
   @ViewChild('file')
     myfile!: ElementRef;
 
-  constructor(private http: HttpClient, private sanitizer: DomSanitizer) { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
   }

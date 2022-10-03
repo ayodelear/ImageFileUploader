@@ -3,6 +3,7 @@ using Azure.Storage.Blobs;
 using Azure;
 using ImageFileUploaderAPI.Interfaces;
 using ImageFileUploaderAPI.Models;
+using System.Net.Sockets;
 
 namespace ImageFileUploaderAPI.Services
 {
@@ -47,7 +48,6 @@ namespace ImageFileUploaderAPI.Services
                 response.Status = $"File with name {fileName} already exists. Please use another name to store your file.";
                 response.Error = true;
                 response.IsDuplicated = true;
-                return response;
             }
             catch (RequestFailedException ex)
             {
@@ -55,7 +55,15 @@ namespace ImageFileUploaderAPI.Services
                 _logger.LogError($"Unhandled Exception. ID: {ex.StackTrace} - Message: {ex.Message}");
                 response.Status = $"Unexpected error: {ex.StackTrace}. Check log with StackTrace ID.";
                 response.Error = true;
-                return response;
+            }
+            catch (Exception ex)
+            {
+                response.Error = true;
+                var requestFailedException = ex.InnerException as RequestFailedException;
+                if (requestFailedException != null && requestFailedException.ErrorCode == null)
+                {
+                    response.IsOffLine = true;
+                }
             }
 
             return response;

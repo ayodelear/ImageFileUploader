@@ -8,5 +8,6 @@
 
         public BlobDto Blob { get; set; }
         public bool IsDuplicated { get; internal set; }
+        public bool IsOffLine { get; internal set; }
     }
 }

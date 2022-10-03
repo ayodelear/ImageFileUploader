@@ -55,7 +55,7 @@ namespace ImageUploaderAPI.Controllers
                         }
 
                         blobContentInfo = await azureStorage.UploadAsync(file.FileName, imageStream);
-                        if (blobContentInfo.Error && !blobContentInfo.IsDuplicated)
+                        if (blobContentInfo.Error && blobContentInfo.IsOffLine)
                           blobContentInfo = await localStorage.StoreAsync(file);
 
                         if (blobContentInfo.Error)

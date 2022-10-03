@@ -16,18 +16,21 @@
       {{progress}}%
     </span>
     <div>
-    <span class="upload" *ngIf="message">
-      {{message}}
-    </span>
-      </div>
+      <span class="upload" *ngIf="message">
+        {{message}}
+      </span>
+    </div>
   </div>
   <div class="col-md-10" *ngIf="imageUrl">
     <img [src]="imageUrl | safeurl"
          alt="{{fileName}}"
          class="img-responsive"
-         style="max-height:300px"/>
+         style="max-height:300px" />
     <p>
-      {{fileName}}
+      Name: {{fileName}}
+    </p>
+    <p>
+      Storage Type: {{storeLocation}}
     </p>
   </div>
 </div>
